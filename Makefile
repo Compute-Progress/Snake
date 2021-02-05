@@ -1,5 +1,5 @@
 NAME = Snake
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsnaitize=address
 INCLUDES = -I includes/ -I includes/includes_SDL2/
 
 LIB_DIR = libs/
