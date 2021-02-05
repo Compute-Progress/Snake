@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "../incl/snake.h"
 
 void reset_game(Context *ctx)
 {
@@ -12,7 +12,8 @@ void reset_game(Context *ctx)
 	ctx->snake->dir = RIGHT;
 	ctx->snake->old_dir = RIGHT;
 	head = ctx->snake->head;
-	ctx->snake->head = head;
+	head->x = 9;
+	head->y = 10;
 	while (i < SNAKE_INITIAL)
 	{
 		head->next->x = 9;
@@ -20,14 +21,15 @@ void reset_game(Context *ctx)
 		head = head->next;
 		i++;
 	}
+	tmp = head->next;
+	head->next = NULL;
 	ctx->snake->tail = head;
 
-	tmp = head;
-	while (head)
+	while (tmp != NULL)
 	{
-		tmp = head->next;
-		free(head);
 		head = tmp;
+		tmp = tmp->next;
+		free(head);
 	}
 	parse_map(ctx);
 }
@@ -40,13 +42,13 @@ void init_ctx(Context *ctx)
 	i = 0;
 	ctx->game = 1;
 	ctx->score = 0;
-	ctx->snake->dir = RIGHT;
-	ctx->snake->old_dir = RIGHT;
 	parse_map(ctx);
 	if (!ctx->snake)
-		ctx->snake = calloc(1, sizeof(*ctx->snake));
+		ctx->snake = SDL_calloc(1, sizeof(*ctx->snake));
 	head = new_node(10, 10);
 
+	ctx->snake->dir = RIGHT;
+	ctx->snake->old_dir = RIGHT;
 	ctx->snake->head = head;
 	while (i < SNAKE_INITIAL)
 	{
@@ -57,7 +59,7 @@ void init_ctx(Context *ctx)
 	ctx->snake->tail = head;
 	TTF_Init();
 
-	ctx->font = TTF_OpenFont(strjoin(ASSETS_PATH, "Pixel_Font.ttf"), 30);
+	ctx->font = TTF_OpenFont(strjoin(ASSETS_PATH, "Pixel_Font.ttf"), 14);
 }
 
 Context *get_context()

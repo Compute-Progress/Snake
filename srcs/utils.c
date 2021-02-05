@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "../incl/snake.h"
 
 snake_node *new_node(int x, int y)
 {
@@ -55,8 +55,63 @@ char	*strjoin(char const *s1, char const *s2)
 	len = SDL_strlen(s1) + SDL_strlen(s2) + 1;
 	if (!(str = SDL_malloc(len)))
 		return (NULL);
-		
-	str = SDL_strlcpy(str, s1, len);
 
-	return (SDL_strlcat(str, s2, len));
+	SDL_strlcpy(str, s1, len);
+
+	SDL_strlcat(str, s2, len);
+	return str;
+}
+
+unsigned int	intsize(long long nb)
+{
+	unsigned int size;
+
+	size = 0;
+	while (nb > 0)
+	{
+		++size;
+		nb /= 10;
+	}
+	return (size);
+}
+
+char	*itoa(int nbr)
+{
+	char			*str;
+	long long		n;
+	unsigned int	size;
+
+	if (nbr == 0)
+		return (SDL_strdup("0"));
+	n = (long long)nbr;
+	if (nbr < 0)
+		n *= -1;
+	size = intsize(n) + (nbr < 0);
+	if (!(str = (char*)SDL_malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	if (nbr < 0)
+		str[0] = '-';
+	str[size] = '\0';
+	while (n > 0)
+	{
+		str[--size] = (char)(n % 10 + 48);
+		n /= 10;
+	}
+	return (str);
+}
+
+void render_message(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst)
+{
+	SDL_Surface *message;
+	SDLX_Display *display;
+
+	display = SDLX_GetDisplay();
+	message = TTF_RenderText_Solid(font,
+						msg,
+						(SDL_Color){255, 255, 255, 255});
+	SDL_RenderCopy(display->renderer,
+					SDL_CreateTextureFromSurface(display->renderer, message),
+					src, dst);
+	SDL_FreeSurface(message);
+	//Should be using SDL_itoa here but there is no internet so I can't look at the documentation >:(
 }

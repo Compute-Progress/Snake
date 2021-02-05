@@ -1,4 +1,4 @@
-#include "SDLX.h"
+#include "../../incl/SDLX.h"
 
 void SDLX_InputLoop(void)
 {
@@ -17,11 +17,11 @@ void SDLX_RenderLoop(void)
 
 	display = SDLX_GetDisplay();
 	SDLX_screen_reset(display->renderer, NULL);
+	SDL_Delay(DELAY_AMNT);
 }
 
 void SDLX_Update(void)
 {
 	SDLX_InputLoop();
 	SDLX_RenderLoop();
-	SDL_Delay(DELAY_AMNT);
 }

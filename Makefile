@@ -1,5 +1,4 @@
-NAME = DOOMBIRD
-
+NAME = Snake
 FLAGS = -Wall -Wextra -Werror
 INCLUDES = -I includes/ -I includes/includes_SDL2/
 
@@ -7,29 +6,29 @@ LIB_DIR = libs/
 LIBRARIES = $(LIB_DIR)libSDL2.dylib $(LIB_DIR)libSDL2_ttf.dylib
 
 SDLX_DIR = SDLX/
-INPUT_DIR = input/
 SRCS_DIR = srcs/
 
 BIN_DIR = bin/
 
 
-INPUT_NAMES = 			\
-	input_entry			\
-	controller_in		\
-	keyboard_in			\
-
 SDLX_NAMES = 			\
 	SDLX_init			\
-	SDLX_render_queue	\
 	SDLX_render			\
-
-C_FILES =				\
-	$(SRCS_NAMES) 		\
+	SDLX				\
 
 SRCS_NAMES =	\
 	$(addprefix $(SDLX_DIR), $(SDLX_NAMES))		\
-	$(addprefix $(INPUT_DIR), $(INPUT_NAMES))	\
+	game_loops			\
+	init				\
+	input				\
 	main 				\
+	parse				\
+	render				\
+	snake				\
+	utils				\
+
+C_FILES =				\
+	$(SRCS_NAMES) 		\
 	
 SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR), $(C_FILES)))
 OBJS = $(addprefix $(BIN_DIR), $(SRCS:.c=.o))

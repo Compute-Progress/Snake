@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "../incl/snake.h"
 
 void render_game(Context *ctx)
 {
@@ -32,6 +32,7 @@ void render_game(Context *ctx)
 		}
 		y++;
 	}
+
 	SDL_RenderCopy(display->renderer, 
 					SDL_CreateTextureFromSurface(display->renderer, surf),
 					NULL, NULL);

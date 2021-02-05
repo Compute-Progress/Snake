@@ -1,4 +1,4 @@
-#include "SDLX.h"
+#include "../../incl/SDLX.h"
 
 void	SDLX_start(SDLX_Display *dest)
 {

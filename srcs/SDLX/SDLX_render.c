@@ -11,13 +11,13 @@
  *     Created: 24Jan2021
 ***************************************************************************/
 
-#include "SDLX.h"
+#include "../../incl/SDLX.h"
 
 // The function below will be called at the end of each draw stage
 // and display the renderer onto the window, and prep it for a new
 // draw stage.
 
-void	SDLX_screen_reset(SDL_Renderer *renderer, SDL_Color *bg_color)
+void	SDLX_screen_reset(SDL_Renderer *renderer, SDL_Color *bg_color SDL_UNUSED)
 {
 	// SDL_Log("NEW FRAME DRAWN");
 

@@ -1,6 +1,4 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include "snake.h"
+#include "../incl/snake.h"
 
 void parse_map(Context *ctx)
 {
@@ -26,15 +24,15 @@ void parse_map(Context *ctx)
 	memcpy((ctx->map)[ 5], "0                            0", 30);
 	memcpy((ctx->map)[ 6], "0                            0", 30);
 	memcpy((ctx->map)[ 7], "0                            0", 30);
-	memcpy((ctx->map)[ 8], "                              ", 30);
-	memcpy((ctx->map)[ 9], "                              ", 30);
+	memcpy((ctx->map)[ 8], "0                            0", 30);
+	memcpy((ctx->map)[ 9], "0                            0", 30);
 	memcpy((ctx->map)[10], "0                            0", 30);
 	memcpy((ctx->map)[11], "0                            0", 30);
 	memcpy((ctx->map)[12], "0                            0", 30);
-	memcpy((ctx->map)[13], "0                            0", 30);
-	memcpy((ctx->map)[14], "0             X              0", 30);
-	memcpy((ctx->map)[15], "0                            0", 30);
-	memcpy((ctx->map)[16], "0                            0", 30);
+	memcpy((ctx->map)[13], "                              ", 30);
+	memcpy((ctx->map)[14], "              X               ", 30);
+	memcpy((ctx->map)[15], "                              ", 30);
+	memcpy((ctx->map)[16], "                              ", 30);
 	memcpy((ctx->map)[17], "0                            0", 30);
 	memcpy((ctx->map)[18], "0                            0", 30);
 	memcpy((ctx->map)[19], "0                            0", 30);

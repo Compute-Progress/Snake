@@ -10,12 +10,12 @@
 
 typedef enum	INPUT
 {
-	LEFT 	= 0b0001,
-	RIGHT	= 0b0010,
-	UP 		= 0b0100,
-	DOWN 	= 0b1000,
-	RESET	= 0b1000,
-	PAUSE 	= 0b1000,
+	LEFT 	= 0b000001,
+	RIGHT	= 0b000010,
+	UP 		= 0b000100,
+	DOWN 	= 0b001000,
+	RESET	= 0b010000,
+	PAUSE 	= 0b100000,
 }				INPUT;
 
 typedef struct snake_node
@@ -55,10 +55,12 @@ void input(Context *ctx);
 void swap(int *a, int *b);
 snake_node *new_node(int x, int y);
 void render_game(Context *context);
-void print_bits(int n);
+void print_bits(int n,int bits);
 void parse_map(Context *ctx);
 void generate_point(Context *ctx);
 Context *get_context();
 void reset_game(Context *ctx);
 
+void 	render_message(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
 char	*strjoin(char const *s1, char const *s2);
+char	*itoa(int nbr);

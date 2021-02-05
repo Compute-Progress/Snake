@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "../incl/snake.h"
 
 typedef void(*game_func)(Context *ctx);
 
@@ -24,8 +24,7 @@ int main()
 	while (1)
 	{
 		input(context);
-		loops[context->game];
-		render_game(context);
+		loops[context->game](context);
 		SDLX_RenderLoop();
 	}
 }
