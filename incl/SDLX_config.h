@@ -9,7 +9,7 @@
 # define WIN_X 0
 # define WIN_Y 0
 
-# define DELAY_AMNT 50
+# define DELAY_AMNT 30
 
 # define SAVE_FILE_PATH NULL
 # define ASSETS_PATH "assets/"
