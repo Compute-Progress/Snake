@@ -1,5 +1,6 @@
 #include "SDLX.h"
 #include <SDL2/SDL_ttf.h>
+#include <emscripten.h>
 
 # define SNAKE_INITIAL 3
 # define BOARD_W 30
